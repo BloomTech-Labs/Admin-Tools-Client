@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": ["react", "import", "jsx-a11y"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "globals": { "fetch": false }
+  }
+}
