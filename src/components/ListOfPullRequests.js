@@ -12,6 +12,8 @@ class ListOfPullRequests extends Component {
   };
 
   render() {
+    // if theres an error getting the pull requests it will display this html
+    if (this.props.prError) return <p>Sorry, there was an error fetching pull requests</p>;
     return (
       <div className="list-pr">
         {this.props.prs.map((pr, i) => {
@@ -24,7 +26,8 @@ class ListOfPullRequests extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    prs: state.prs
+    prs: state.prs,
+    prError: state.prError
   }
 };
 
