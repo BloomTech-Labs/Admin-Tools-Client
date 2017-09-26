@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import PullRequestItem from './PullRequestItem';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getPrs } from '../actions';
+import { fetchPrs } from '../actions';
+import './ListOfPullRequest.css';
 
 class ListOfPullRequests extends Component {
 
   componentDidMount = () => {
-    this.props.getPrs();
+    this.props.fetchPrs();
   };
 
   render() {
     return (
-      <div>
+      <div className="list-pr">
         {this.props.prs.map((pr, i) => {
           return <PullRequestItem key={i} prBody={pr} />;
         })}
@@ -27,7 +28,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getPrs }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchPrs }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListOfPullRequests);
 

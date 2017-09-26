@@ -1,0 +1,7 @@
+.list-pr {
+    width: 60vw;
+    background-color: white;
+    margin: 38px auto;
+    border: 2px outset whitesmoke;
+    box-shadow: -2px 2px grey;
+}

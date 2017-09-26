@@ -4,10 +4,10 @@ import './index.css';
 import App from './components/App';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import ReduxPromise from 'redux-promise';
+import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-const store = applyMiddleware(ReduxPromise)(createStore);
+const store = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
   <Provider store={store(reducers, window.__REDUX_DEVTOOLS_EXTENSION__())} >

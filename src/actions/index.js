@@ -1,12 +1,15 @@
-import axios from 'axios';
-
 export const GET_PRS = "GET_PRS";
 
-export const getPrs = () => {
-  //must change axios get method to proper request this is just for testing
-  const promise = axios.get('https://lambda-admin.herokuapp.com/pull-requests');
-  return {
-    type: GET_PRS,
-    payload: promise
-  }
+export const fetchPrs = () => (dispatch) => {
+  fetch('https://lambda-admin.herokuapp.com/pull-requests')
+    .then(res => res.json())
+    .then(res => dispatch({
+      type: GET_PRS,
+      payload: res
+    }))
+    .catch(err => console.log(err));
 };
+
+//TODO
+//add better error handling
+//change fetch request to proper request

@@ -5,7 +5,7 @@ import { GET_PRS } from '../actions';
 const prReducer = (prs = [], action) => {
   switch(action.type) {
     case GET_PRS:
-      return action.payload.data;
+      return action.payload;
     default:
       return prs;
   }
