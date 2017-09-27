@@ -42,3 +42,5 @@ export default class PullRequestItem extends Component {
 
 //For stylistic reasons instead of making the whole pull request background for closed items red
 //I instead set a red border around the avatar
+//TODO
+//When click on pr takes you to seperate page with more info on that pr
