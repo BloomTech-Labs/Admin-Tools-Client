@@ -12,10 +12,15 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
-    setInterval(this.plusDivs, 3000);
+    this.timer = setInterval(this.plusDivs, 3000);
   };
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   plusDivs() {
+    console.log('hi')
     if (this.state.slideIndex <= 3) this.setState(prev => prev.slideIndex++);
     if (this.state.slideIndex > 3) this.setState({slideIndex: 1});
   };
