@@ -2,6 +2,7 @@ export const FETCH_PRS = "FETCH_PRS";
 export const PR_ERROR = "PR_ERROR";
 export const DELETE_PR = "DELETE_PR";
 export const CLEAR_PRS = "CLEAR_PRS";
+export const RETURN_REM_STATE = "RETURN_REM_STATE";
 
 const prError = () => {
   return { 
@@ -12,7 +13,7 @@ const prError = () => {
 
 export const fetchPrs = () => async dispatch => {
   try {
-    const res = await fetch('https://lambda-admin.herokuapp.com/pull-requests')
+    const res = await fetch('http://localhost:5000/pull-requests')
     dispatch({ type: FETCH_PRS, payload: await res.json() });
   } catch(err) {
       dispatch(prError());
@@ -21,8 +22,9 @@ export const fetchPrs = () => async dispatch => {
 
 export const deletePr = (id) => async dispatch => {
   try {
-    const res = await fetch(`https://lambda-admin.herokuapp.com/pull-requests/${id}`, { method: 'delete' })
-    dispatch({ type: DELETE_PR, payload: await res.json() });
+    const res = await fetch(`http://localhost:5000/pull-requests/${id}`, { method: 'delete' })
+    dispatch({ type: DELETE_PR, removed: await res.json()});
+    setTimeout(() => dispatch({ type: RETURN_REM_STATE }), 3000);
   } catch(err) {
       dispatch(prError());
   };
@@ -30,9 +32,14 @@ export const deletePr = (id) => async dispatch => {
 
 export const clearClosedPrs = () => async dispatch => {
   try {
-    const res = await fetch('https://lambda-admin.herokuapp.com/pull-requests/clear', { method: 'delete' })
-    dispatch({ type: FETCH_PRS, payload: await res.json() });
+    const res = await fetch('http://localhost:5000/pull-requests/clear', { method: 'delete' })
+    dispatch({ type: CLEAR_PRS, removed: await res.json() });
+    setTimeout(() => dispatch({ type: RETURN_REM_STATE }), 3000);
   } catch(err) {
       dispatch(prError());
   };
 };
+
+//TODO
+//Match up endpoints to whatever the backend is calling them
+//Incorporate More Actions

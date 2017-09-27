@@ -23,15 +23,7 @@
   font-weight: 600;
 }
 
-.pr-item-open {
-  height: 200px;
-  margin: auto;
-  width: 60vw;
-  border-bottom: 1px solid whitesmoke;
-  background-color: rgba(255, 255, 255, .4)
-}
-
-.pr-item-closed {
+.pr-item {
   height: 200px;
   margin: auto;
   width: 60vw;

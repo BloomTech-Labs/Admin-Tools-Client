@@ -6,22 +6,22 @@ export default class PullRequestItem extends Component {
     super();
     this.deleteHandle = this.deleteHandle.bind(this);
     this.modalHandle = this.modalHandle.bind(this);
-  }
+  };
 
   deleteHandle() {
     this.modal.style = "display: block;";
-  }
+  };
 
   modalHandle(e) {
-    const { id } = this.props.prBody;
-    if (e.target.id) this.props.deletePr(id);
+    const { _id } = this.props.prBody;
+    if (e.target.id) this.props.deletePr(_id);
     this.modal.style = "display: none;";
-  }
+  };
 
   render() {
-    const { user, name, title, state } = this.props.prBody;
+    const { user, name, state } = this.props.prBody;
     return (
-      <div className={state === 'open' ? "pr-item-open" : "pr-item-closed"}>
+      <div className="pr-item">
         <div style={{ display: 'none' }} className="delete-modal" ref={(e) => { this.modal = e; }}>
           <h2 className="modal-question">Are you sure you want to delete this pull request?</h2>
           <h2 id={true} className="modal-option" onClick={this.modalHandle}>Yes</h2>
@@ -32,11 +32,13 @@ export default class PullRequestItem extends Component {
             <img className={state === 'open' ? "avatar" :"avatar-closed" }alt="avatar" src={user.avatar_url} />
             <p className="user-name">{user.login}</p>
           </div>
-          <strong>{name}</strong> {/*some of the prs have name and others have title*/}
-          <strong>{title}</strong>
+          <strong>{name}</strong>
           <img src='https://d30y9cdsu7xlg0.cloudfront.net/png/3058-200.png' alt="delete" className="trash-can" onClick={this.deleteHandle}/>
           </div>
       </div>
     );
   }
 }
+
+//For stylistic reasons instead of making the whole pull request background for closed items red
+//I instead set a red border around the avatar
