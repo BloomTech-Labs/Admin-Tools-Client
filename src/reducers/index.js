@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux';
 
-import { FETCH_PRS, PR_ERROR, DELETE_PR, CLEAR_PRS, RETURN_REM_STATE } from '../actions';
+import {
+  FETCH_PRS,
+  PR_ERROR,
+  DELETE_PR,
+  CLEAR_PRS,
+  RETURN_REM_STATE,
+} from '../actions';
 
 
 const prReducer = (state = [], action) => {
-  switch(action.type) {
+  switch (action.type) {
     case FETCH_PRS:
       return action.payload;
     default:
@@ -13,11 +19,11 @@ const prReducer = (state = [], action) => {
 };
 
 const prRemoveReducer = (state = false, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case DELETE_PR:
-      return true
+      return true;
     case CLEAR_PRS:
-      return true
+      return true;
     case RETURN_REM_STATE:
       return false;
     default:
@@ -26,7 +32,7 @@ const prRemoveReducer = (state = false, action) => {
 };
 
 const prErrorReducer = (state = false, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case PR_ERROR:
       return action.hasError;
     default:
@@ -34,5 +40,8 @@ const prErrorReducer = (state = false, action) => {
   }
 };
 
-export default combineReducers({ prs: prReducer, prRemoved: prRemoveReducer, prError: prErrorReducer });
+export default combineReducers({ prs: prReducer,
+  prRemoved: prRemoveReducer,
+  prError: prErrorReducer,
+});
 

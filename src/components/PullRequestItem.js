@@ -6,17 +6,17 @@ export default class PullRequestItem extends Component {
     super();
     this.deleteHandle = this.deleteHandle.bind(this);
     this.modalHandle = this.modalHandle.bind(this);
-  };
+  }
 
   deleteHandle() {
-    this.modal.style = "display: block;";
-  };
+    this.modal.style = 'display: block;';
+  }
 
   modalHandle(e) {
     const { _id } = this.props.prBody;
     if (e.target.id) this.props.deletePr(_id);
-    this.modal.style = "display: none;";
-  };
+    this.modal.style = 'display: none;';
+  }
 
   render() {
     const { user, name, state } = this.props.prBody;
@@ -29,11 +29,11 @@ export default class PullRequestItem extends Component {
         </div>
         <div >
           <div className="user-info">
-            <img className={state === 'open' ? "avatar" :"avatar-closed" }alt="avatar" src={user.avatar_url} />
+            <img className={state === 'open' ? 'avatar' : 'avatar-closed' }alt="avatar" src={user.avatar_url} />
             <p className="user-name">{user.login}</p>
           </div>
           <strong>{name}</strong>
-          <img src='https://d30y9cdsu7xlg0.cloudfront.net/png/3058-200.png' alt="delete" className="trash-can" onClick={this.deleteHandle}/>
+          <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/3058-200.png" alt="delete" className="trash-can" onClick={this.deleteHandle}/>
           </div>
       </div>
     );
@@ -44,3 +44,4 @@ export default class PullRequestItem extends Component {
 //I instead set a red border around the avatar
 //TODO
 //When click on pr takes you to seperate page with more info on that pr
+//Include prop types
