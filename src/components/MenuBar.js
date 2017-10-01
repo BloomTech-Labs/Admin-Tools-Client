@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import './MenuBar.css';
-
 
 export default () => (
   <div className="menu-header">
@@ -11,7 +9,7 @@ export default () => (
         <Link to="/">
           <img
             className="lambda-icon"
-            src="https://lambdaschool.com/assets/img/lambdawhite.png"
+            src="lambdawhite2.png"
             alt="lambda icon"
           />
         </Link>

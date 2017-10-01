@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "eslint": "^4.7.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
@@ -19,7 +18,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.0",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.1.0",
     "js-yaml": "^3.10.0",
     "prettier-eslint": "^8.1.1"
