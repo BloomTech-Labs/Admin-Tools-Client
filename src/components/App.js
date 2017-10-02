@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import ListOfPullRequests from './ListOfPullRequests';
-import logo from '../logo.svg';
+import UserBar from './UserBar.js';
+import SideBar from './SideBar';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Lambda School Pull-Request Tracker</h2>
-          <ListOfPullRequests />
-        </div>
-      </div>
-    );
-  }
-}
 
-export default App;
+export default () => (
+  <div className="App">
+    <div className="side-navs">
+      <SideBar />
+      <UserBar />
+    </div>
+    <ListOfPullRequests />
+  </div>
+);

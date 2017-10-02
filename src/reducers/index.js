@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux';
 
-import { FETCH_PRS, PR_ERROR } from '../actions';
+import {
+  FETCH_PRS,
+  PR_ERROR,
+  DELETE_PR,
+  CLEAR_PRS,
+  RETURN_REM_STATE,
+} from '../actions';
 
-// reducer for the pull requests
+
 const prReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_PRS:
@@ -12,7 +18,19 @@ const prReducer = (state = [], action) => {
   }
 };
 
-// this reducer will be triggered if en error is caught by the action creator
+const prRemoveReducer = (state = false, action) => {
+  switch (action.type) {
+    case DELETE_PR:
+      return true;
+    case CLEAR_PRS:
+      return true;
+    case RETURN_REM_STATE:
+      return false;
+    default:
+      return state;
+  }
+};
+
 const prErrorReducer = (state = false, action) => {
   switch (action.type) {
     case PR_ERROR:
@@ -22,6 +40,8 @@ const prErrorReducer = (state = false, action) => {
   }
 };
 
-//in future could add loading state but at this point seems unnecessary
+export default combineReducers({ prs: prReducer,
+  prRemoved: prRemoveReducer,
+  prError: prErrorReducer,
+});
 
-export default combineReducers({ prs: prReducer, prError: prErrorReducer });
